@@ -26,7 +26,8 @@ def write_line(img_path, im_shape, boxes, ids, idx):
     return line
 
 file_list = []
-train_path ="label_2"
+#train_path ="label_2"
+train_path = ""
 val_path = "label_2"
 class_name = ["Truck","Van","Cyclist","Car","Misc","Pedestrian","Tram","Person_sitting"]
 # all_ids = np.array([0, 1, 2,3,4,5,6,7])
@@ -59,7 +60,8 @@ with open('val.lst', 'w') as fw:
             #create img_path
             file_arr = file.split('.')
             img_path = file_arr[0]+'.'+"png"
-            img = mx.image.imread("training/image_2/"+img_path)
+            #img = mx.image.imread("training/image_2/"+img_path)
+            img = mx.image.imread(img_path)
             im_shape = np.array([1242, 375, 3])
             all_box=[]
             all_ids=[]
@@ -74,7 +76,7 @@ with open('val.lst', 'w') as fw:
                 class_id = []
                 #add id value to ids
                 str_class = line_arr[0]
-                #如果这行的类别在类别数组class_name中
+                #if class in class_name
                 #if class name of line in class_name
                 if(str_class in class_name):
                     #all_ids.append(class_name.index(str_class))
